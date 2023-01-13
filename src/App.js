@@ -8,9 +8,35 @@ import Ar from "./Components/Ar";
 import ScreenAnimation from "./Components/ScreenAnimation";
 // import Nft from "./Components/Nft";
 import { AnimatePresence } from "framer-motion";
-// import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function App() {
+
+  axios.defaults.withCredentials = true
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+
+    var config = {
+      method: 'get',
+      url: 'http://localhost:8080/user/getuser'
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setUser(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  }, [])
+
+
+
   const location = useLocation();
   // console.log(Cookies.get());
   return (
@@ -21,7 +47,7 @@ export default function App() {
         </div>
         <div className="block sm:hidden">
           <NavbarMobile />
-        </div>  
+        </div>
         <Routes location={location} key={location.pathname}>
           <Route path="/" exact element={<Home />} />
           <Route path="/generate" exact element={<Generate />} />
