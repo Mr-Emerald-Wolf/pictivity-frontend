@@ -46,13 +46,13 @@ export default function App() {
           <NavbarWeb user={user} />
         </div>
         <div className="block sm:hidden">
-          <NavbarMobile />
+          <NavbarMobile user={user}/>
         </div>
         <Routes location={location} key={location.pathname}>
           <Route path="/" exact element={<Home user={user}/>} />
-          <Route path="/generate" exact element={<Generate />} />
+          <Route path="/generate" exact element={<Generate user={user} />} />
           <Route path="/ar" exact element={<Ar />} />
-          <Route path="/profile" exact element={<Profile />} />
+          <Route path="/profile" exact element={<Profile user={user} />} />
           <Route path="/peepee" exact element={<ScreenAnimation />} />
           {/* <Route path="/nft" exact element={<Nft />} /> */}
         </Routes>

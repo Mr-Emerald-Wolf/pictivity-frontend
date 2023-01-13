@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function NavbarMobile() {
+export default function NavbarMobile(props) {
   const url_var = window.location.pathname.split("/");
   const which_page = url_var[1].trim(" ");
 
@@ -187,6 +187,7 @@ export default function NavbarMobile() {
         </svg>
       </Link> */}
       <Link to="/profile">
+      {props.user != null ? <img className="rounded-[50%] w-[2.2rem]" src={props.user.profileimg} /> :
         <svg
           width="30"
           height="30"
@@ -216,7 +217,7 @@ export default function NavbarMobile() {
             stroke="#928FB0"
             stroke-width="2"
           />
-        </svg>
+        </svg>}
       </Link>
     </div>
   );

@@ -188,7 +188,7 @@ export default function NavbarWeb(props) {
       </Link> */}
 
       <Link to="/profile">
-      {props.user != null ? <img src={props.user.profileimg} /> :
+      {props.user != null ? <img className="rounded-[50%] w-[2.2rem]" src={props.user.profileimg} /> :
       <svg
         width="30"
         height="30"

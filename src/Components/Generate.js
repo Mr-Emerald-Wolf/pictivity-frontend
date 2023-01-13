@@ -1,5 +1,7 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import ScreenAnimation from "./ScreenAnimation";
+
 
 export default function Generate() {
   const [userprompt, setUserprompt] = useState("");
@@ -11,13 +13,38 @@ export default function Generate() {
   const [url, setUrl] = useState("");
   const [hidden, setHidden] = useState("hidden");
 
-  
+
+
+  axios.defaults.withCredentials = true
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+
+    var config = {
+      method: 'get',
+      url: 'http://localhost:8080/user/getuser'
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setUser(response.data.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  }, [])
+
+  console.log(user);
+
 
   const [isVisible, setIsVisible] = useState(true);
 
-  setTimeout(()=>{
+  setTimeout(() => {
     setIsVisible(false);
-  },1000);
+  }, 1000);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -67,37 +94,35 @@ export default function Generate() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Cookie", "connect.sid=s%3AyDC7oJnBCZU-fV4ZB_kOuvbZ-NMPBobD.PtGWjSRPA7dmP0kNUr%2BA9c6nP%2FKS79z1mO%2FKTpGQQII");
-    
-    var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-myHeaders.append("Cookie", "connect.sid=s%3AyDC7oJnBCZU-fV4ZB_kOuvbZ-NMPBobD.PtGWjSRPA7dmP0kNUr%2BA9c6nP%2FKS79z1mO%2FKTpGQQII");
 
-var raw = JSON.stringify({
-  name: name,
-  description: desc,
-  imageURL: returnedimg,
-  wallet: wallet
-});
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
+    var raw = JSON.stringify({
+      userId: user.id,
+      name: name,
+      description: desc,
+      imageURL: returnedimg,
+      wallet: wallet
+    });
 
-fetch("http://localhost:8080/nft/createnft", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-    
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: raw,
       redirect: 'follow'
     };
-    
+
+    fetch("http://localhost:8080/nft/createnft", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
     fetch("http://localhost:8080/nft/createnft", requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
