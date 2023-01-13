@@ -27,7 +27,7 @@ export default function App() {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        setUser(response.data)
+        setUser(response.data.data)
       })
       .catch(function (error) {
         console.log(error);
@@ -43,7 +43,7 @@ export default function App() {
     <div>
       <AnimatePresence>
         <div className="sm:block hidden">
-          <NavbarWeb />
+          <NavbarWeb user={user} />
         </div>
         <div className="block sm:hidden">
           <NavbarMobile />
