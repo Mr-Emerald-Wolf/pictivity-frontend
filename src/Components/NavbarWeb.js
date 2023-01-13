@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function NavbarWeb() {
+export default function NavbarWeb(props) {
   const url_var = window.location.pathname.split("/");
   const which_page = url_var[1].trim(" ");
 
@@ -188,36 +188,37 @@ export default function NavbarWeb() {
       </Link> */}
 
       <Link to="/profile">
-        <svg
-          width="30"
-          height="30"
-          viewBox="0 0 34 34"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="cursor-pointer"
-        >
-          <path
-            d="M24.9895 26.7367V24.6992C24.9895 23.6184 24.5602 22.5819 23.7959 21.8177C23.0317 21.0535 21.9952 20.6241 20.9144 20.6241H12.7643C11.6836 20.6241 10.647 21.0535 9.88283 21.8177C9.11861 22.5819 8.68927 23.6184 8.68927 24.6992V26.7367"
-            stroke="#928FB0"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M16.8394 16.549C19.09 16.549 20.9145 14.7246 20.9145 12.474C20.9145 10.2234 19.09 8.39893 16.8394 8.39893C14.5888 8.39893 12.7643 10.2234 12.7643 12.474C12.7643 14.7246 14.5888 16.549 16.8394 16.549Z"
-            stroke="#928FB0"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <circle
-            cx="16.8394"
-            cy="17.1719"
-            r="15.8282"
-            stroke="#928FB0"
-            stroke-width="2"
-          />
-        </svg>
+      {props.user.name ? <img src={props.user.profileimg} /> :
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 34 34"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="cursor-pointer"
+      >
+        <path
+          d="M24.9895 26.7367V24.6992C24.9895 23.6184 24.5602 22.5819 23.7959 21.8177C23.0317 21.0535 21.9952 20.6241 20.9144 20.6241H12.7643C11.6836 20.6241 10.647 21.0535 9.88283 21.8177C9.11861 22.5819 8.68927 23.6184 8.68927 24.6992V26.7367"
+          stroke="#928FB0"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M16.8394 16.549C19.09 16.549 20.9145 14.7246 20.9145 12.474C20.9145 10.2234 19.09 8.39893 16.8394 8.39893C14.5888 8.39893 12.7643 10.2234 12.7643 12.474C12.7643 14.7246 14.5888 16.549 16.8394 16.549Z"
+          stroke="#928FB0"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <circle
+          cx="16.8394"
+          cy="17.1719"
+          r="15.8282"
+          stroke="#928FB0"
+          stroke-width="2"
+        />
+        </svg>}
       </Link>
     </div>
   );

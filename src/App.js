@@ -49,7 +49,7 @@ export default function App() {
           <NavbarMobile />
         </div>
         <Routes location={location} key={location.pathname}>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" exact element={<Home user={user}/>} />
           <Route path="/generate" exact element={<Generate />} />
           <Route path="/ar" exact element={<Ar />} />
           <Route path="/profile" exact element={<Profile />} />
