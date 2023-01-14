@@ -37,7 +37,7 @@ export default function Generate() {
 
   }, [])
 
-  console.log(user);
+  // console.log(user);
 
 
   const [isVisible, setIsVisible] = useState(true);
