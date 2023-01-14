@@ -97,7 +97,7 @@ export default function Generate() {
 
 
     var raw = JSON.stringify({
-      userId: user.id,
+      userId: 1,
       name: name,
       description: desc,
       imageURL: returnedimg,

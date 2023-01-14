@@ -5,7 +5,7 @@ export default function NavbarWeb(props) {
   const which_page = url_var[1].trim(" ");
 
   return (
-    <div className="z-100 flex flex-col align-middle justify-around absolute px-4 min-h-[93vh] rounded-lg left-4 top-[50%] translate-y-[-50%] bg-whitetwo">
+    <div className="z-100 fixed flex flex-col align-middle justify-around px-4 min-h-[93vh] rounded-lg left-4 top-[50%] translate-y-[-50%] bg-whitetwo">
       {/* <svg
         width="3"
         height="67"
